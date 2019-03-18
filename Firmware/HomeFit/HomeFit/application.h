@@ -17,6 +17,11 @@
 #define STATE_ON		0xFF
 #define STATE_OFF		0x00
 
+// 동작
+#define FORWARD			11
+#define REVERSE			22
+
+
 void ApplicationMain(void);
 void AppInit(void);
 
