@@ -21,7 +21,6 @@
 #define FORWARD			11
 #define REVERSE			22
 
-
 void ApplicationMain(void);
 void AppInit(void);
 

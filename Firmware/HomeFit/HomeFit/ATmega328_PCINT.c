@@ -7,9 +7,13 @@
 
 #include "ATmega328_PCINT.h"
 
+#define FORWARD_OP
+
 volatile uint8_t pin0_flg = 0, pin2_flg = 0, pin4_flg = 0, pin8_flg = 0;
-volatile uint8_t pin2_forward_flg = 0, pin4_reverse_flg = 0;
+volatile uint8_t pin2_forward_flg = 0, pin4_forward_flg = 0;
+volatile uint8_t pin2_reverse_flg = 0, pin4_reverse_flg = 0;
 uint8_t state = 0;
+uint8_t tick = 0;
 
 void PCINT_init(void)
 {
@@ -26,26 +30,64 @@ ISR(PCINT0_vect)
 		case 0x01:
 			break;
 		case 0x02:
+			tick = 1;
+			
+			#ifdef FORWARD_OP
 			if(state == FORWARD)
 			{
+				pin2_forward_flg = 0;
+				pin4_forward_flg = 1;
+			}
+			else
+			{
+				pin2_flg = 1;
 				pin2_forward_flg = 1;
+				pin4_forward_flg = 0;
+			}
+			
+			#else
+			if(state == REVERSE)
+			{
+				pin2_reverse_flg = 1;
+				pin4_reverse_flg = 0;
 			}
 			else
 			{
 				pin2_flg = 1;
 			}
-			USART_Transmit_str("2", _ASCII);
+			#endif
+			
+			//USART_Transmit_str("F", _ASCII);
 			break;
 		case 0x04:
-			if(state == REVERSE)
+			tick = 1;
+			
+			#ifdef FORWARD_OP
+			if(state == FORWARD)
 			{
-				pin4_reverse_flg = 1;
+				pin2_forward_flg = 1;
+				pin4_forward_flg = 0;
 			}
 			else
 			{
 				pin4_flg = 1;
 			}
-			USART_Transmit_str("4", _ASCII);
+			
+			#else
+			if(state == REVERSE)
+			{
+				pin2_reverse_flg = 0;
+				pin4_reverse_flg = 1;
+			}
+			else
+			{
+				pin4_flg = 1;
+				pin2_reverse_flg = 1;
+				pin4_reverse_flg = 0;
+			}
+			#endif
+			
+			//USART_Transmit_str("R", _ASCII);
 			break;		
 		case 0x08:
 			pin8_flg = 1;

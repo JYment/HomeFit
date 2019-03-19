@@ -6,70 +6,104 @@
  */ 
 #include "common.h"
 
-uint8_t forward_state = 0, reverse_state = 0;
-uint8_t pin2_cnt = 0, pin4_cnt = 0;
-uint8_t ex_cnt = 0;
+#define FORWARD_OP
+
+uint8_t ex_cnt = 0, count = 0;
+uint8_t pos[2] = {0, 0};
+uint8_t before_pos[2] = {0, 0};
+
 
 void ApplicationMain(void)
 {
 	PORTB |= (1 << PORTB5);
 	
-	if(pin2_flg == 1 && pin4_flg == 0)
+	if(tick == 1)									// 인터럽트 동작하면
 	{
-		state = FORWARD;
-	}
-	else if(pin2_flg == 0 && pin4_flg == 1)
-	{
-		state = REVERSE;
-	}
-	
-	if(state == FORWARD)
-	{
-		if(pin2_forward_flg == 1)
+		tick = 0;									// 인터럽트 tick 초기화
+
+		#ifdef FORWARD_OP
+		//USART_Transmit_str("FORWARD MODE\n", _ASCII);
+		if(pin2_flg == 1 && pin4_flg == 0)			// 최초 동작 방향 체크
 		{
-			pin2_forward_flg = 0;
-			pin2_cnt++;
-			if(pin2_cnt > 5)
-			{
-// 				uint8_t str[10] = "FORWARD\n";
-// 				USART_Transmit_str(str, _ASCII);
-				forward_state = 1;
-				pin2_flg = 0;
-			}
+			state = FORWARD;
 		}
-	}
-	else if(state == REVERSE)
-	{
-		if(pin4_reverse_flg == 1)
-		{
-			pin4_reverse_flg = 0;
-			pin4_cnt++;
-			if(pin4_cnt > 5)
-			{
-// 				uint8_t str[10] = "REVERSE\n";
-// 				USART_Transmit_str(str, _ASCII);
-				reverse_state = 1;
-				pin4_flg = 0;
-			}
-		}
-	}
-	
-	if(forward_state == 1 && reverse_state == 1)
-	{
-		ex_cnt++;
-// 		uint8_t str[10] = "cnt = ";
-// 		USART_Transmit_str(str, _ASCII);
-// 		translateChartoASCII(ex_cnt);
-//		USART_Transmit_char('\n');
 		
-// 		USART_Transmit_char(0xEA);
-// 		USART_Transmit_char(ex_cnt);
-// 		USART_Transmit_char(0x00);
-// 		USART_Transmit_char(0x5A);
-		forward_state = 0;
-		reverse_state = 0;
-		pin2_cnt = 0;
-		pin4_cnt = 0;
+		if(state == FORWARD)
+		{
+			pos[0] = pin2_forward_flg;
+			pos[1] = pin4_forward_flg;
+			
+			if(before_pos[0] == pos[0])
+			{
+				uint8_t check = 0;
+				ex_cnt++;
+				check = ex_cnt%2;
+				if(check == 0)
+				{
+					ex_cnt = 0;
+					count++;
+					USART_Transmit_char(0xEA);
+					USART_Transmit_char(count);
+					USART_Transmit_char(0x33);
+					USART_Transmit_char(0x5A);
+// 					USART_Transmit_str("\n------- cnt = ", _ASCII);
+// 					translateChartoASCII(count);
+// 					USART_Transmit_str(" -----------\n", _ASCII);
+				}
+				
+				if(before_pos[1] == pos[1])
+				{
+					pin2_flg = 0;
+					pin4_flg = 0;
+				}
+			}
+
+			before_pos[0] = pos[0];
+			before_pos[1] = pos[1];
+		}
+		
+		#else
+		//USART_Transmit_str("REVERSE MODE\n", _ASCII);
+		if(pin2_flg == 0 && pin4_flg == 1)			// 최초 동작 방향 체크
+		{
+			state = REVERSE;
+		}
+
+		if(state == REVERSE)
+		{
+			pos[0] = pin2_reverse_flg;
+			pos[1] = pin4_reverse_flg;
+	
+			if(before_pos[0] == pos[0])
+			{
+				uint8_t check = 0;
+				ex_cnt++;
+				check = ex_cnt%2;
+				if(check == 0)
+				{
+					ex_cnt = 0;
+					count++;
+					USART_Transmit_char(0xEA);
+					USART_Transmit_char(count);
+					USART_Transmit_char(0x33);
+					USART_Transmit_char(0x5A);
+// 					USART_Transmit_str("\n------- cnt = ", _ASCII);
+// 					translateChartoASCII(count);
+// 					USART_Transmit_str(" -----------\n", _ASCII);
+				}
+		
+				if(before_pos[1] == pos[1])
+				{
+					pin2_flg = 0;
+					pin4_flg = 0;
+				}
+			}
+
+			before_pos[0] = pos[0];
+			before_pos[1] = pos[1];
+		}		
+		
+		#endif
 	}
 }
 

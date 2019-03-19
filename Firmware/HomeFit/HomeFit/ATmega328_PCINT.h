@@ -12,8 +12,9 @@
 #include "common.h"
 
 extern volatile uint8_t pin0_flg, pin2_flg, pin4_flg, pin8_flg;
-extern volatile uint8_t pin2_forward_flg, pin4_reverse_flg;
-extern uint8_t state;
+extern volatile uint8_t pin2_forward_flg, pin4_forward_flg;
+extern volatile uint8_t pin2_reverse_flg, pin4_reverse_flg;
+extern uint8_t state, tick;
 
 void PCINT_init(void);
 
