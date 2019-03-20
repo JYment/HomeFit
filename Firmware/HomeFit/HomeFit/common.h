@@ -22,4 +22,11 @@
 #define _SET				1
 #define _RESET				0
 
+// 통신 프로토콜
+#define PT_HEADER		0xEA
+#define PT_TAIL			0x5A
+#define PT_RESET		0xEE
+#define PT_LENTH		3
+
+
 #endif /* COMMON_H_ */

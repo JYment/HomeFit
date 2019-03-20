@@ -11,10 +11,6 @@
 
 #include "common.h"
 
-// 통신 프로토콜
-#define PT_HEADER		0xEA
-#define PT_TAIL			0x5A
-#define PT_RESET		0xEE
 
 
 // 동작
@@ -25,6 +21,7 @@
 void ApplicationMain(void);
 void AppInit(void);
 void all_mode_init(void);
-void send_MSG(void);
+void send_msg(void);
+void receive_msg(void);
 
 #endif /* APPLICATION_H_ */

@@ -123,10 +123,10 @@ ISR(USART_RX_vect)
 {
 	rx_data = UDR0;
 	rx_buf[rx_cnt++] = rx_data;
-	if(rx_cnt == LENTH)
+	if(rx_cnt == PT_LENTH)
 	{
-		memcpy(str, rx_buf, LENTH);
-		str[LENTH] = 0;
+		memcpy(str, rx_buf, PT_LENTH);
+		str[PT_LENTH] = 0;
 		rx_cnt = 0;
 		rx_flag = 1;
 	}

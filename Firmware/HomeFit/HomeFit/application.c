@@ -14,18 +14,7 @@ uint8_t before_dir = 0;
 
 void ApplicationMain(void)
 {
-	if(rx_flag == _SET)
-	{
-		rx_flag = _RESET;
-		if(str[0] == PT_HEADER && str[2] == PT_TAIL)
-		{
-			if(str[1] == PT_RESET)
-			{
-/*				USART_Transmit_str("Initiallizing....\n", _ASCII);*/
-				all_mode_init();
-			}
-		}
-	}
+	receive_msg();
 	
 	if(tick == _SET)									// 인터럽트 동작하면
 	{
@@ -60,7 +49,7 @@ void ApplicationMain(void)
 				{
 					ex_cnt = 0;						// ex_cnt 초기화
 					count++;						// 운동 횟수 count를 '1'씩 더함
-					send_MSG();						// 프로토콜 전송
+					send_msg();						// 프로토콜 전송
 // 					USART_Transmit_str("\n------- cnt = ", _ASCII);
 // 					translateChartoASCII(count);
 // 					USART_Transmit_str(" -----------\n", _ASCII);
@@ -88,13 +77,40 @@ void all_mode_init(void)
 	ex_cnt = _RESET;
 	direction = _RESET;
 	before_dir = _RESET;
-	send_MSG();
+	send_msg();
 }
 
-void send_MSG(void)
+void send_msg(void)
 {
 	USART_Transmit_char(0xEA);		// 프로토콜 전송
 	USART_Transmit_char(count);
 	USART_Transmit_char(0x00);
 	USART_Transmit_char(0x5A);	
+}
+
+void receive_msg(void)
+{
+	if(rx_flag == _SET)
+	{
+		rx_flag = _RESET;
+		if(str[0] == PT_HEADER && str[2] == PT_TAIL)
+		{
+			if(str[1] == PT_RESET)
+			{
+				/*				USART_Transmit_str("Initiallizing....\n", _ASCII);*/
+				all_mode_init();
+			}
+			for(int i=0; i<PT_LENTH; i++)
+			{
+				str[i] = _RESET;
+			}
+		}
+		else
+		{
+			for(int i=0; i<PT_LENTH; i++)
+			{
+				str[i] = _RESET;
+			}
+		}
+	}
 }

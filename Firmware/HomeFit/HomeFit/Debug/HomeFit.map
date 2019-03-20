@@ -206,7 +206,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x366
+.text           0x00000000      0x382
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -291,37 +291,40 @@ END GROUP
  *(.text.*)
  .text.AppInit  0x00000090       0x10 application.o
                 0x00000090                AppInit
- .text.send_MSG
+ .text.send_msg
                 0x000000a0       0x1c application.o
-                0x000000a0                send_MSG
+                0x000000a0                send_msg
  .text.all_mode_init
                 0x000000bc       0x1a application.o
                 0x000000bc                all_mode_init
+ .text.receive_msg
+                0x000000d6       0x40 application.o
+                0x000000d6                receive_msg
  .text.ApplicationMain
-                0x000000d6       0xe8 application.o
-                0x000000d6                ApplicationMain
+                0x00000116       0xc4 application.o
+                0x00000116                ApplicationMain
  .text.PCINT_init
-                0x000001be       0x14 ATmega328_PCINT.o
-                0x000001be                PCINT_init
+                0x000001da       0x14 ATmega328_PCINT.o
+                0x000001da                PCINT_init
  .text.__vector_3
-                0x000001d2       0xf0 ATmega328_PCINT.o
-                0x000001d2                __vector_3
+                0x000001ee       0xf0 ATmega328_PCINT.o
+                0x000001ee                __vector_3
  .text.USART_Init
-                0x000002c2       0x16 ATmega328_USART.o
-                0x000002c2                USART_Init
+                0x000002de       0x16 ATmega328_USART.o
+                0x000002de                USART_Init
  .text.USART_Transmit_char
-                0x000002d8       0x10 ATmega328_USART.o
-                0x000002d8                USART_Transmit_char
+                0x000002f4       0x10 ATmega328_USART.o
+                0x000002f4                USART_Transmit_char
  .text.__vector_18
-                0x000002e8       0x70 ATmega328_USART.o
-                0x000002e8                __vector_18
- .text.main     0x00000358        0xa main.o
-                0x00000358                main
-                0x00000362                . = ALIGN (0x2)
+                0x00000304       0x70 ATmega328_USART.o
+                0x00000304                __vector_18
+ .text.main     0x00000374        0xa main.o
+                0x00000374                main
+                0x0000037e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000362        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000362                _exit
-                0x00000362                exit
+ .fini9         0x0000037e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000037e                _exit
+                0x0000037e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -340,11 +343,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000362        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000037e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000366                _etext = .
+                0x00000382                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000366
+.data           0x00800100        0x0 load address 0x00000382
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -402,8 +405,8 @@ END GROUP
                 0x00800145                rx_data
                 0x00800146                str
                 0x00800178                PROVIDE (__bss_end, .)
-                0x00000366                __data_load_start = LOADADDR (.data)
-                0x00000366                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000382                __data_load_start = LOADADDR (.data)
+                0x00000382                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800178        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -477,27 +480,27 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xe0
+.debug_aranges  0x00000000       0xe8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x38 application.o
+                0x00000000       0x40 application.o
  .debug_aranges
-                0x00000038       0x28 ATmega328_PCINT.o
+                0x00000040       0x28 ATmega328_PCINT.o
  .debug_aranges
-                0x00000060       0x60 ATmega328_USART.o
+                0x00000068       0x60 ATmega328_USART.o
  .debug_aranges
-                0x000000c0       0x20 main.o
+                0x000000c8       0x20 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xe52
+.debug_info     0x00000000      0xeac
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x2ca application.o
- .debug_info    0x000008be      0x187 ATmega328_PCINT.o
- .debug_info    0x00000a45      0x358 ATmega328_USART.o
- .debug_info    0x00000d9d       0xb5 main.o
+ .debug_info    0x000005f4      0x324 application.o
+ .debug_info    0x00000918      0x187 ATmega328_PCINT.o
+ .debug_info    0x00000a9f      0x358 ATmega328_USART.o
+ .debug_info    0x00000df7       0xb5 main.o
 
 .debug_abbrev   0x00000000      0x943
  *(.debug_abbrev)
@@ -507,38 +510,38 @@ END GROUP
  .debug_abbrev  0x00000771      0x16a ATmega328_USART.o
  .debug_abbrev  0x000008db       0x68 main.o
 
-.debug_line     0x00000000      0x772
+.debug_line     0x00000000      0x795
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000133      0x229 application.o
- .debug_line    0x0000035c      0x158 ATmega328_PCINT.o
- .debug_line    0x000004b4      0x264 ATmega328_USART.o
- .debug_line    0x00000718       0x5a main.o
+ .debug_line    0x00000133      0x24c application.o
+ .debug_line    0x0000037f      0x158 ATmega328_PCINT.o
+ .debug_line    0x000004d7      0x264 ATmega328_USART.o
+ .debug_line    0x0000073b       0x5a main.o
 
-.debug_frame    0x00000000      0x1e4
+.debug_frame    0x00000000      0x1f4
  *(.debug_frame)
- .debug_frame   0x00000000       0x54 application.o
- .debug_frame   0x00000054       0x54 ATmega328_PCINT.o
- .debug_frame   0x000000a8      0x118 ATmega328_USART.o
- .debug_frame   0x000001c0       0x24 main.o
+ .debug_frame   0x00000000       0x64 application.o
+ .debug_frame   0x00000064       0x54 ATmega328_PCINT.o
+ .debug_frame   0x000000b8      0x118 ATmega328_USART.o
+ .debug_frame   0x000001d0       0x24 main.o
 
-.debug_str      0x00000000      0x55a
+.debug_str      0x00000000      0x566
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1da application.o
-                                0x21e (size before relaxing)
- .debug_str     0x000003e2       0x90 ATmega328_PCINT.o
+ .debug_str     0x00000208      0x1e6 application.o
+                                0x22a (size before relaxing)
+ .debug_str     0x000003ee       0x90 ATmega328_PCINT.o
                                 0x217 (size before relaxing)
- .debug_str     0x00000472       0xd7 ATmega328_USART.o
+ .debug_str     0x0000047e       0xd7 ATmega328_USART.o
                                 0x274 (size before relaxing)
- .debug_str     0x00000549       0x11 main.o
+ .debug_str     0x00000555       0x11 main.o
                                 0x17d (size before relaxing)
 
-.debug_loc      0x00000000      0x5c3
+.debug_loc      0x00000000      0x627
  *(.debug_loc)
- .debug_loc     0x00000000       0xab application.o
- .debug_loc     0x000000ab       0x90 ATmega328_PCINT.o
- .debug_loc     0x0000013b      0x488 ATmega328_USART.o
+ .debug_loc     0x00000000      0x10f application.o
+ .debug_loc     0x0000010f       0x90 ATmega328_PCINT.o
+ .debug_loc     0x0000019f      0x488 ATmega328_USART.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -558,12 +561,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xa0
+.debug_ranges   0x00000000       0xa8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x28 application.o
- .debug_ranges  0x00000028       0x18 ATmega328_PCINT.o
- .debug_ranges  0x00000040       0x50 ATmega328_USART.o
- .debug_ranges  0x00000090       0x10 main.o
+ .debug_ranges  0x00000000       0x30 application.o
+ .debug_ranges  0x00000030       0x18 ATmega328_PCINT.o
+ .debug_ranges  0x00000048       0x50 ATmega328_USART.o
+ .debug_ranges  0x00000098       0x10 main.o
 
 .debug_macro
  *(.debug_macro)

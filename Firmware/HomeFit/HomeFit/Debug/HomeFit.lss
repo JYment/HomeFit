@@ -3,31 +3,31 @@ HomeFit.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000003da  2**0
+  0 .data         00000000  00800100  00800100  000003f6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000366  00000000  00000000  00000074  2**1
+  1 .text         00000382  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000078  00800100  00800100  000003da  2**0
+  2 .bss          00000078  00800100  00800100  000003f6  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003da  2**0
+  3 .comment      00000030  00000000  00000000  000003f6  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000040c  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000428  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000e0  00000000  00000000  0000044c  2**0
+  5 .debug_aranges 000000e8  00000000  00000000  00000468  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000e52  00000000  00000000  0000052c  2**0
+  6 .debug_info   00000eac  00000000  00000000  00000550  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000943  00000000  00000000  0000137e  2**0
+  7 .debug_abbrev 00000943  00000000  00000000  000013fc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000772  00000000  00000000  00001cc1  2**0
+  8 .debug_line   00000795  00000000  00000000  00001d3f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001e4  00000000  00000000  00002434  2**2
+  9 .debug_frame  000001f4  00000000  00000000  000024d4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000055a  00000000  00000000  00002618  2**0
+ 10 .debug_str    00000566  00000000  00000000  000026c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000005c3  00000000  00000000  00002b72  2**0
+ 11 .debug_loc    00000627  00000000  00000000  00002c2e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a0  00000000  00000000  00003135  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  00003255  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -36,7 +36,7 @@ Disassembly of section .text:
    0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
    4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
    8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
-   c:	0c 94 e9 00 	jmp	0x1d2	; 0x1d2 <__vector_3>
+   c:	0c 94 f7 00 	jmp	0x1ee	; 0x1ee <__vector_3>
   10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
@@ -51,7 +51,7 @@ Disassembly of section .text:
   3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
-  48:	0c 94 74 01 	jmp	0x2e8	; 0x2e8 <__vector_18>
+  48:	0c 94 82 01 	jmp	0x304	; 0x304 <__vector_18>
   4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
@@ -81,8 +81,8 @@ Disassembly of section .text:
   7e:	a8 37       	cpi	r26, 0x78	; 120
   80:	b2 07       	cpc	r27, r18
   82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
-  84:	0e 94 ac 01 	call	0x358	; 0x358 <main>
-  88:	0c 94 b1 01 	jmp	0x362	; 0x362 <_exit>
+  84:	0e 94 ba 01 	call	0x374	; 0x374 <main>
+  88:	0c 94 bf 01 	jmp	0x37e	; 0x37e <_exit>
 
 0000008c <__bad_interrupt>:
   8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -96,31 +96,31 @@ void AppInit(void)
 	USART_Init(BAUD_9600);			// USART 9600 baudrate 설정
   90:	87 e6       	ldi	r24, 0x67	; 103
   92:	90 e0       	ldi	r25, 0x00	; 0
-  94:	0e 94 61 01 	call	0x2c2	; 0x2c2 <USART_Init>
+  94:	0e 94 6f 01 	call	0x2de	; 0x2de <USART_Init>
 	PCINT_init();
-  98:	0e 94 df 00 	call	0x1be	; 0x1be <PCINT_init>
+  98:	0e 94 ed 00 	call	0x1da	; 0x1da <PCINT_init>
 	sei();
   9c:	78 94       	sei
   9e:	08 95       	ret
 
-000000a0 <send_MSG>:
-	send_MSG();
+000000a0 <send_msg>:
+	send_msg();
 }
 
-void send_MSG(void)
+void send_msg(void)
 {
 	USART_Transmit_char(0xEA);		// 프로토콜 전송
   a0:	8a ee       	ldi	r24, 0xEA	; 234
-  a2:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <USART_Transmit_char>
+  a2:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <USART_Transmit_char>
 	USART_Transmit_char(count);
   a6:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <count>
-  aa:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <USART_Transmit_char>
+  aa:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <USART_Transmit_char>
 	USART_Transmit_char(0x00);
   ae:	80 e0       	ldi	r24, 0x00	; 0
-  b0:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <USART_Transmit_char>
+  b0:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <USART_Transmit_char>
 	USART_Transmit_char(0x5A);	
   b4:	8a e5       	ldi	r24, 0x5A	; 90
-  b6:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <USART_Transmit_char>
+  b6:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <USART_Transmit_char>
   ba:	08 95       	ret
 
 000000bc <all_mode_init>:
@@ -139,430 +139,462 @@ void all_mode_init(void)
   c8:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <direction>
 	before_dir = _RESET;
   cc:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
-	send_MSG();
-  d0:	0e 94 50 00 	call	0xa0	; 0xa0 <send_MSG>
+	send_msg();
+  d0:	0e 94 50 00 	call	0xa0	; 0xa0 <send_msg>
   d4:	08 95       	ret
 
-000000d6 <ApplicationMain>:
-uint8_t before_pos[4] = {0, 0, 0, 0};
-uint8_t before_dir = 0;
+000000d6 <receive_msg>:
+	USART_Transmit_char(0x5A);	
+}
 
-void ApplicationMain(void)
+void receive_msg(void)
 {
 	if(rx_flag == _SET)
   d6:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <rx_flag>
   da:	81 30       	cpi	r24, 0x01	; 1
-  dc:	81 f4       	brne	.+32     	; 0xfe <ApplicationMain+0x28>
+  dc:	d9 f4       	brne	.+54     	; 0x114 <receive_msg+0x3e>
 	{
 		rx_flag = _RESET;
   de:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <rx_flag>
 		if(str[0] == PT_HEADER && str[2] == PT_TAIL)
   e2:	80 91 46 01 	lds	r24, 0x0146	; 0x800146 <str>
   e6:	8a 3e       	cpi	r24, 0xEA	; 234
-  e8:	51 f4       	brne	.+20     	; 0xfe <ApplicationMain+0x28>
+  e8:	21 f4       	brne	.+8      	; 0xf2 <receive_msg+0x1c>
   ea:	80 91 48 01 	lds	r24, 0x0148	; 0x800148 <str+0x2>
   ee:	8a 35       	cpi	r24, 0x5A	; 90
-  f0:	31 f4       	brne	.+12     	; 0xfe <ApplicationMain+0x28>
+  f0:	31 f0       	breq	.+12     	; 0xfe <receive_msg+0x28>
+		}
+		else
+		{
+			for(int i=0; i<PT_LENTH; i++)
+			{
+				str[i] = _RESET;
+  f2:	e6 e4       	ldi	r30, 0x46	; 70
+  f4:	f1 e0       	ldi	r31, 0x01	; 1
+  f6:	10 82       	st	Z, r1
+  f8:	11 82       	std	Z+1, r1	; 0x01
+  fa:	12 82       	std	Z+2, r1	; 0x02
+  fc:	08 95       	ret
+	if(rx_flag == _SET)
+	{
+		rx_flag = _RESET;
+		if(str[0] == PT_HEADER && str[2] == PT_TAIL)
 		{
 			if(str[1] == PT_RESET)
-  f2:	80 91 47 01 	lds	r24, 0x0147	; 0x800147 <str+0x1>
-  f6:	8e 3e       	cpi	r24, 0xEE	; 238
-  f8:	11 f4       	brne	.+4      	; 0xfe <ApplicationMain+0x28>
+  fe:	80 91 47 01 	lds	r24, 0x0147	; 0x800147 <str+0x1>
+ 102:	8e 3e       	cpi	r24, 0xEE	; 238
+ 104:	11 f4       	brne	.+4      	; 0x10a <receive_msg+0x34>
 			{
-/*				USART_Transmit_str("Initiallizing....\n", _ASCII);*/
+				/*				USART_Transmit_str("Initiallizing....\n", _ASCII);*/
 				all_mode_init();
-  fa:	0e 94 5e 00 	call	0xbc	; 0xbc <all_mode_init>
+ 106:	0e 94 5e 00 	call	0xbc	; 0xbc <all_mode_init>
 			}
-		}
-	}
+			for(int i=0; i<PT_LENTH; i++)
+			{
+				str[i] = _RESET;
+ 10a:	e6 e4       	ldi	r30, 0x46	; 70
+ 10c:	f1 e0       	ldi	r31, 0x01	; 1
+ 10e:	10 82       	st	Z, r1
+ 110:	11 82       	std	Z+1, r1	; 0x01
+ 112:	12 82       	std	Z+2, r1	; 0x02
+ 114:	08 95       	ret
+
+00000116 <ApplicationMain>:
+uint8_t before_pos[4] = {0, 0, 0, 0};
+uint8_t before_dir = 0;
+
+void ApplicationMain(void)
+{
+	receive_msg();
+ 116:	0e 94 6b 00 	call	0xd6	; 0xd6 <receive_msg>
 	
 	if(tick == _SET)									// 인터럽트 동작하면
-  fe:	80 91 09 01 	lds	r24, 0x0109	; 0x800109 <tick>
- 102:	81 30       	cpi	r24, 0x01	; 1
- 104:	09 f0       	breq	.+2      	; 0x108 <ApplicationMain+0x32>
- 106:	5a c0       	rjmp	.+180    	; 0x1bc <ApplicationMain+0xe6>
+ 11a:	80 91 09 01 	lds	r24, 0x0109	; 0x800109 <tick>
+ 11e:	81 30       	cpi	r24, 0x01	; 1
+ 120:	09 f0       	breq	.+2      	; 0x124 <ApplicationMain+0xe>
+ 122:	5a c0       	rjmp	.+180    	; 0x1d8 <ApplicationMain+0xc2>
 	{
 		tick = _RESET;									// 인터럽트 tick 초기화
- 108:	10 92 09 01 	sts	0x0109, r1	; 0x800109 <tick>
+ 124:	10 92 09 01 	sts	0x0109, r1	; 0x800109 <tick>
 
 		if(dir_pos[0] == 1 && dir_pos[1] == 0 && dir_pos[2] == 0 && dir_pos[3] == 1)		// 방향 확인
- 10c:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dir_pos>
- 110:	81 30       	cpi	r24, 0x01	; 1
- 112:	b1 f4       	brne	.+44     	; 0x140 <ApplicationMain+0x6a>
- 114:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <dir_pos+0x1>
- 118:	81 11       	cpse	r24, r1
- 11a:	12 c0       	rjmp	.+36     	; 0x140 <ApplicationMain+0x6a>
- 11c:	80 91 07 01 	lds	r24, 0x0107	; 0x800107 <dir_pos+0x2>
- 120:	81 11       	cpse	r24, r1
- 122:	0e c0       	rjmp	.+28     	; 0x140 <ApplicationMain+0x6a>
- 124:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <dir_pos+0x3>
- 128:	81 30       	cpi	r24, 0x01	; 1
- 12a:	51 f4       	brne	.+20     	; 0x140 <ApplicationMain+0x6a>
+ 128:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dir_pos>
+ 12c:	81 30       	cpi	r24, 0x01	; 1
+ 12e:	b1 f4       	brne	.+44     	; 0x15c <ApplicationMain+0x46>
+ 130:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <dir_pos+0x1>
+ 134:	81 11       	cpse	r24, r1
+ 136:	12 c0       	rjmp	.+36     	; 0x15c <ApplicationMain+0x46>
+ 138:	80 91 07 01 	lds	r24, 0x0107	; 0x800107 <dir_pos+0x2>
+ 13c:	81 11       	cpse	r24, r1
+ 13e:	0e c0       	rjmp	.+28     	; 0x15c <ApplicationMain+0x46>
+ 140:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <dir_pos+0x3>
+ 144:	81 30       	cpi	r24, 0x01	; 1
+ 146:	51 f4       	brne	.+20     	; 0x15c <ApplicationMain+0x46>
 		{
 			direction = FORWARD;					// 정방향으로 초기화
- 12c:	8b e0       	ldi	r24, 0x0B	; 11
- 12e:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <direction>
+ 148:	8b e0       	ldi	r24, 0x0B	; 11
+ 14a:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <direction>
 			for(int i=0; i<4; i++)					
 			{
 				dir_pos[i] = _RESET;						// 1 0 0 1 초기화
- 132:	e5 e0       	ldi	r30, 0x05	; 5
- 134:	f1 e0       	ldi	r31, 0x01	; 1
- 136:	10 82       	st	Z, r1
- 138:	11 82       	std	Z+1, r1	; 0x01
- 13a:	12 82       	std	Z+2, r1	; 0x02
- 13c:	13 82       	std	Z+3, r1	; 0x03
- 13e:	1d c0       	rjmp	.+58     	; 0x17a <ApplicationMain+0xa4>
+ 14e:	e5 e0       	ldi	r30, 0x05	; 5
+ 150:	f1 e0       	ldi	r31, 0x01	; 1
+ 152:	10 82       	st	Z, r1
+ 154:	11 82       	std	Z+1, r1	; 0x01
+ 156:	12 82       	std	Z+2, r1	; 0x02
+ 158:	13 82       	std	Z+3, r1	; 0x03
+ 15a:	1d c0       	rjmp	.+58     	; 0x196 <ApplicationMain+0x80>
 			}
 		}
 		else if(dir_pos[0] == 0 && dir_pos[1] == 1 && dir_pos[2] == 1 && dir_pos[3] == 0)			
- 140:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dir_pos>
- 144:	81 11       	cpse	r24, r1
- 146:	19 c0       	rjmp	.+50     	; 0x17a <ApplicationMain+0xa4>
- 148:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <dir_pos+0x1>
- 14c:	81 30       	cpi	r24, 0x01	; 1
- 14e:	a9 f4       	brne	.+42     	; 0x17a <ApplicationMain+0xa4>
- 150:	80 91 07 01 	lds	r24, 0x0107	; 0x800107 <dir_pos+0x2>
- 154:	81 30       	cpi	r24, 0x01	; 1
- 156:	89 f4       	brne	.+34     	; 0x17a <ApplicationMain+0xa4>
- 158:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <dir_pos+0x3>
- 15c:	81 11       	cpse	r24, r1
- 15e:	0d c0       	rjmp	.+26     	; 0x17a <ApplicationMain+0xa4>
+ 15c:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dir_pos>
+ 160:	81 11       	cpse	r24, r1
+ 162:	19 c0       	rjmp	.+50     	; 0x196 <ApplicationMain+0x80>
+ 164:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <dir_pos+0x1>
+ 168:	81 30       	cpi	r24, 0x01	; 1
+ 16a:	a9 f4       	brne	.+42     	; 0x196 <ApplicationMain+0x80>
+ 16c:	80 91 07 01 	lds	r24, 0x0107	; 0x800107 <dir_pos+0x2>
+ 170:	81 30       	cpi	r24, 0x01	; 1
+ 172:	89 f4       	brne	.+34     	; 0x196 <ApplicationMain+0x80>
+ 174:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <dir_pos+0x3>
+ 178:	81 11       	cpse	r24, r1
+ 17a:	0d c0       	rjmp	.+26     	; 0x196 <ApplicationMain+0x80>
 		{
 			direction = REVERSE;					// 역방향으로 초기화
- 160:	86 e1       	ldi	r24, 0x16	; 22
- 162:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <direction>
+ 17c:	86 e1       	ldi	r24, 0x16	; 22
+ 17e:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <direction>
 			for(int i=0; i<4; i++)
 			{
 				dir_pos[i] = _RESET;						// 0 1 1 0 초기화
- 166:	e5 e0       	ldi	r30, 0x05	; 5
- 168:	f1 e0       	ldi	r31, 0x01	; 1
- 16a:	10 82       	st	Z, r1
- 16c:	11 82       	std	Z+1, r1	; 0x01
- 16e:	12 82       	std	Z+2, r1	; 0x02
- 170:	13 82       	std	Z+3, r1	; 0x03
+ 182:	e5 e0       	ldi	r30, 0x05	; 5
+ 184:	f1 e0       	ldi	r31, 0x01	; 1
+ 186:	10 82       	st	Z, r1
+ 188:	11 82       	std	Z+1, r1	; 0x01
+ 18a:	12 82       	std	Z+2, r1	; 0x02
+ 18c:	13 82       	std	Z+3, r1	; 0x03
 			}
 			flag = _SET;								// 해당 뱡향에 의한 동작 flag
- 172:	81 e0       	ldi	r24, 0x01	; 1
- 174:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <flag>
- 178:	04 c0       	rjmp	.+8      	; 0x182 <ApplicationMain+0xac>
+ 18e:	81 e0       	ldi	r24, 0x01	; 1
+ 190:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <flag>
+ 194:	04 c0       	rjmp	.+8      	; 0x19e <ApplicationMain+0x88>
 		}
 		
 		if(flag == _SET)								// 해당 방향이 SET이면
- 17a:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <flag>
- 17e:	81 30       	cpi	r24, 0x01	; 1
- 180:	e9 f4       	brne	.+58     	; 0x1bc <ApplicationMain+0xe6>
+ 196:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <flag>
+ 19a:	81 30       	cpi	r24, 0x01	; 1
+ 19c:	e9 f4       	brne	.+58     	; 0x1d8 <ApplicationMain+0xc2>
 		{
 			if(before_dir != direction)
- 182:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <_edata>
- 186:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
- 18a:	98 17       	cp	r25, r24
- 18c:	99 f0       	breq	.+38     	; 0x1b4 <ApplicationMain+0xde>
+ 19e:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <_edata>
+ 1a2:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
+ 1a6:	98 17       	cp	r25, r24
+ 1a8:	99 f0       	breq	.+38     	; 0x1d0 <ApplicationMain+0xba>
 			{
 				uint8_t check = 0;					// 체크 변수
 				ex_cnt++;							// 방향이 전환될 때 ex_cnt가 오름
- 18e:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <ex_cnt>
- 192:	8f 5f       	subi	r24, 0xFF	; 255
+ 1aa:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <ex_cnt>
+ 1ae:	8f 5f       	subi	r24, 0xFF	; 255
 				check = ex_cnt%2;					// ex_cnt 짝수를 확인
 				if(check == 0)						// 짝수이면 
- 194:	80 ff       	sbrs	r24, 0
- 196:	03 c0       	rjmp	.+6      	; 0x19e <ApplicationMain+0xc8>
+ 1b0:	80 ff       	sbrs	r24, 0
+ 1b2:	03 c0       	rjmp	.+6      	; 0x1ba <ApplicationMain+0xa4>
 		if(flag == _SET)								// 해당 방향이 SET이면
 		{
 			if(before_dir != direction)
 			{
 				uint8_t check = 0;					// 체크 변수
 				ex_cnt++;							// 방향이 전환될 때 ex_cnt가 오름
- 198:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <ex_cnt>
- 19c:	0b c0       	rjmp	.+22     	; 0x1b4 <ApplicationMain+0xde>
+ 1b4:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <ex_cnt>
+ 1b8:	0b c0       	rjmp	.+22     	; 0x1d0 <ApplicationMain+0xba>
 				check = ex_cnt%2;					// ex_cnt 짝수를 확인
 				if(check == 0)						// 짝수이면 
 				{
 					ex_cnt = 0;						// ex_cnt 초기화
- 19e:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <ex_cnt>
+ 1ba:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <ex_cnt>
 					count++;						// 운동 횟수 count를 '1'씩 더함
- 1a2:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <count>
- 1a6:	8f 5f       	subi	r24, 0xFF	; 255
- 1a8:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <count>
-					send_MSG();						// 프로토콜 전송
- 1ac:	0e 94 50 00 	call	0xa0	; 0xa0 <send_MSG>
+ 1be:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <count>
+ 1c2:	8f 5f       	subi	r24, 0xFF	; 255
+ 1c4:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <count>
+					send_msg();						// 프로토콜 전송
+ 1c8:	0e 94 50 00 	call	0xa0	; 0xa0 <send_msg>
 // 					USART_Transmit_str("\n------- cnt = ", _ASCII);
 // 					translateChartoASCII(count);
 // 					USART_Transmit_str(" -----------\n", _ASCII);
 					flag = _RESET;
- 1b0:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <flag>
+ 1cc:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <flag>
 				}
 			}
 
 			before_dir = direction;
- 1b4:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
- 1b8:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
- 1bc:	08 95       	ret
+ 1d0:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
+ 1d4:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 1d8:	08 95       	ret
 
-000001be <PCINT_init>:
+000001da <PCINT_init>:
 uint8_t tick = 0;
 volatile uint8_t dir_pos[4] = {0, 0, 0, 0};
 volatile uint8_t i = 0;
 void PCINT_init(void)
 {
 	DDRB &= ~((1 << PORTB0) | (1 << PORTB1) | (1 << PORTB2) | (1 << PORTB3));
- 1be:	84 b1       	in	r24, 0x04	; 4
- 1c0:	80 7f       	andi	r24, 0xF0	; 240
- 1c2:	84 b9       	out	0x04, r24	; 4
+ 1da:	84 b1       	in	r24, 0x04	; 4
+ 1dc:	80 7f       	andi	r24, 0xF0	; 240
+ 1de:	84 b9       	out	0x04, r24	; 4
 	PCICR = (1 << PCIE0);
- 1c4:	81 e0       	ldi	r24, 0x01	; 1
- 1c6:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__TEXT_REGION_LENGTH__+0x7e0068>
+ 1e0:	81 e0       	ldi	r24, 0x01	; 1
+ 1e2:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__TEXT_REGION_LENGTH__+0x7e0068>
 	PCMSK0 = (1 << PCINT0) | (1 << PCINT1) | (1 << PCINT2) | (1 << PCINT3);
- 1ca:	8f e0       	ldi	r24, 0x0F	; 15
- 1cc:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <__TEXT_REGION_LENGTH__+0x7e006b>
- 1d0:	08 95       	ret
+ 1e6:	8f e0       	ldi	r24, 0x0F	; 15
+ 1e8:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <__TEXT_REGION_LENGTH__+0x7e006b>
+ 1ec:	08 95       	ret
 
-000001d2 <__vector_3>:
+000001ee <__vector_3>:
 }
 
 ISR(PCINT0_vect)
 {
- 1d2:	1f 92       	push	r1
- 1d4:	0f 92       	push	r0
- 1d6:	0f b6       	in	r0, 0x3f	; 63
- 1d8:	0f 92       	push	r0
- 1da:	11 24       	eor	r1, r1
- 1dc:	8f 93       	push	r24
- 1de:	9f 93       	push	r25
- 1e0:	ef 93       	push	r30
- 1e2:	ff 93       	push	r31
+ 1ee:	1f 92       	push	r1
+ 1f0:	0f 92       	push	r0
+ 1f2:	0f b6       	in	r0, 0x3f	; 63
+ 1f4:	0f 92       	push	r0
+ 1f6:	11 24       	eor	r1, r1
+ 1f8:	8f 93       	push	r24
+ 1fa:	9f 93       	push	r25
+ 1fc:	ef 93       	push	r30
+ 1fe:	ff 93       	push	r31
 	uint8_t input_check = PINB & 0x0F;
- 1e4:	83 b1       	in	r24, 0x03	; 3
+ 200:	83 b1       	in	r24, 0x03	; 3
 	tick = _SET;
- 1e6:	91 e0       	ldi	r25, 0x01	; 1
- 1e8:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <tick>
+ 202:	91 e0       	ldi	r25, 0x01	; 1
+ 204:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <tick>
 	switch(input_check)
- 1ec:	8f 70       	andi	r24, 0x0F	; 15
- 1ee:	82 30       	cpi	r24, 0x02	; 2
- 1f0:	19 f0       	breq	.+6      	; 0x1f8 <__vector_3+0x26>
- 1f2:	84 30       	cpi	r24, 0x04	; 4
- 1f4:	79 f1       	breq	.+94     	; 0x254 <__vector_3+0x82>
- 1f6:	5c c0       	rjmp	.+184    	; 0x2b0 <__vector_3+0xde>
+ 208:	8f 70       	andi	r24, 0x0F	; 15
+ 20a:	82 30       	cpi	r24, 0x02	; 2
+ 20c:	19 f0       	breq	.+6      	; 0x214 <__vector_3+0x26>
+ 20e:	84 30       	cpi	r24, 0x04	; 4
+ 210:	79 f1       	breq	.+94     	; 0x270 <__vector_3+0x82>
+ 212:	5c c0       	rjmp	.+184    	; 0x2cc <__vector_3+0xde>
 	{
 		case WIRE_DIR_LEFT:						// 왼쪽 리드스위치 INT가 동작하면
 	
 		dir_pos[i++] = forward_dir_flg = _SET;			// 정방향 flag '1' 설정
- 1f8:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
- 1fc:	81 e0       	ldi	r24, 0x01	; 1
- 1fe:	8e 0f       	add	r24, r30
- 200:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
- 204:	f0 e0       	ldi	r31, 0x00	; 0
- 206:	81 e0       	ldi	r24, 0x01	; 1
- 208:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <forward_dir_flg>
- 20c:	eb 5f       	subi	r30, 0xFB	; 251
- 20e:	fe 4f       	sbci	r31, 0xFE	; 254
- 210:	80 83       	st	Z, r24
+ 214:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
+ 218:	81 e0       	ldi	r24, 0x01	; 1
+ 21a:	8e 0f       	add	r24, r30
+ 21c:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
+ 220:	f0 e0       	ldi	r31, 0x00	; 0
+ 222:	81 e0       	ldi	r24, 0x01	; 1
+ 224:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <forward_dir_flg>
+ 228:	eb 5f       	subi	r30, 0xFB	; 251
+ 22a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 22c:	80 83       	st	Z, r24
 		dir_pos[i++] = reverse_dir_flg = _RESET;
- 212:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
- 216:	8e 0f       	add	r24, r30
- 218:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
- 21c:	f0 e0       	ldi	r31, 0x00	; 0
- 21e:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <reverse_dir_flg>
- 222:	eb 5f       	subi	r30, 0xFB	; 251
- 224:	fe 4f       	sbci	r31, 0xFE	; 254
- 226:	10 82       	st	Z, r1
+ 22e:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
+ 232:	8e 0f       	add	r24, r30
+ 234:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
+ 238:	f0 e0       	ldi	r31, 0x00	; 0
+ 23a:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <reverse_dir_flg>
+ 23e:	eb 5f       	subi	r30, 0xFB	; 251
+ 240:	fe 4f       	sbci	r31, 0xFE	; 254
+ 242:	10 82       	st	Z, r1
 		if(i>3)		i = _RESET;
- 228:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <i>
- 22c:	84 30       	cpi	r24, 0x04	; 4
- 22e:	10 f0       	brcs	.+4      	; 0x234 <__vector_3+0x62>
- 230:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <i>
+ 244:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <i>
+ 248:	84 30       	cpi	r24, 0x04	; 4
+ 24a:	10 f0       	brcs	.+4      	; 0x250 <__vector_3+0x62>
+ 24c:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <i>
 		
 		if(direction == FORWARD)				// 방향이 정방향으로 지정됐다면
- 234:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
- 238:	8b 30       	cpi	r24, 0x0B	; 11
- 23a:	31 f4       	brne	.+12     	; 0x248 <__vector_3+0x76>
+ 250:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
+ 254:	8b 30       	cpi	r24, 0x0B	; 11
+ 256:	31 f4       	brne	.+12     	; 0x264 <__vector_3+0x76>
 		{
 			wire_left_flg_1 = _SET;				// 왼쪽 flag '0' 설정
- 23c:	81 e0       	ldi	r24, 0x01	; 1
- 23e:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <wire_left_flg_1>
+ 258:	81 e0       	ldi	r24, 0x01	; 1
+ 25a:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <wire_left_flg_1>
 			wire_left_flg_2 = _RESET;				// 오른쪽 flag '1' 설정
- 242:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <wire_left_flg_2>
- 246:	34 c0       	rjmp	.+104    	; 0x2b0 <__vector_3+0xde>
+ 25e:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <wire_left_flg_2>
+ 262:	34 c0       	rjmp	.+104    	; 0x2cc <__vector_3+0xde>
 		}
 		else									// 최초 동작 스위치가 왼쪽이면
 		{
 			wire_left_flg_1 = _RESET;				// 왼쪽 flag '1' 초기화
- 248:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <wire_left_flg_1>
+ 264:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <wire_left_flg_1>
 			wire_left_flg_2 = _SET;				// 오른쪽 flag '0' 초기화
- 24c:	81 e0       	ldi	r24, 0x01	; 1
- 24e:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <wire_left_flg_2>
- 252:	2e c0       	rjmp	.+92     	; 0x2b0 <__vector_3+0xde>
+ 268:	81 e0       	ldi	r24, 0x01	; 1
+ 26a:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <wire_left_flg_2>
+ 26e:	2e c0       	rjmp	.+92     	; 0x2cc <__vector_3+0xde>
 		}
 		break;
 		
 		case WIRE_DIR_RIGHT:					// 오른쪽 리드스위치 INT가 동작하면
 		dir_pos[i++] = forward_dir_flg = _RESET;			// 정방향 flag '1' 설정
- 254:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
- 258:	81 e0       	ldi	r24, 0x01	; 1
- 25a:	8e 0f       	add	r24, r30
- 25c:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
- 260:	f0 e0       	ldi	r31, 0x00	; 0
- 262:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <forward_dir_flg>
- 266:	eb 5f       	subi	r30, 0xFB	; 251
- 268:	fe 4f       	sbci	r31, 0xFE	; 254
- 26a:	10 82       	st	Z, r1
+ 270:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
+ 274:	81 e0       	ldi	r24, 0x01	; 1
+ 276:	8e 0f       	add	r24, r30
+ 278:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
+ 27c:	f0 e0       	ldi	r31, 0x00	; 0
+ 27e:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <forward_dir_flg>
+ 282:	eb 5f       	subi	r30, 0xFB	; 251
+ 284:	fe 4f       	sbci	r31, 0xFE	; 254
+ 286:	10 82       	st	Z, r1
 		dir_pos[i++] = reverse_dir_flg = _SET;
- 26c:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
- 270:	81 e0       	ldi	r24, 0x01	; 1
- 272:	8e 0f       	add	r24, r30
- 274:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
- 278:	f0 e0       	ldi	r31, 0x00	; 0
- 27a:	81 e0       	ldi	r24, 0x01	; 1
- 27c:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <reverse_dir_flg>
- 280:	eb 5f       	subi	r30, 0xFB	; 251
- 282:	fe 4f       	sbci	r31, 0xFE	; 254
- 284:	80 83       	st	Z, r24
+ 288:	e0 91 04 01 	lds	r30, 0x0104	; 0x800104 <i>
+ 28c:	81 e0       	ldi	r24, 0x01	; 1
+ 28e:	8e 0f       	add	r24, r30
+ 290:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <i>
+ 294:	f0 e0       	ldi	r31, 0x00	; 0
+ 296:	81 e0       	ldi	r24, 0x01	; 1
+ 298:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <reverse_dir_flg>
+ 29c:	eb 5f       	subi	r30, 0xFB	; 251
+ 29e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2a0:	80 83       	st	Z, r24
 		if(i>3)		i = _RESET;		
- 286:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <i>
- 28a:	84 30       	cpi	r24, 0x04	; 4
- 28c:	10 f0       	brcs	.+4      	; 0x292 <__vector_3+0xc0>
- 28e:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <i>
+ 2a2:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <i>
+ 2a6:	84 30       	cpi	r24, 0x04	; 4
+ 2a8:	10 f0       	brcs	.+4      	; 0x2ae <__vector_3+0xc0>
+ 2aa:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <i>
 		
 		if(direction == FORWARD)				// 방향이 정방향으로 지정됐다면
- 292:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
- 296:	8b 30       	cpi	r24, 0x0B	; 11
- 298:	31 f4       	brne	.+12     	; 0x2a6 <__vector_3+0xd4>
+ 2ae:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <direction>
+ 2b2:	8b 30       	cpi	r24, 0x0B	; 11
+ 2b4:	31 f4       	brne	.+12     	; 0x2c2 <__vector_3+0xd4>
 		{
 			wire_right_flg_1 = _RESET;				// 왼쪽 flag '1' 설정
- 29a:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <wire_right_flg_1>
+ 2b6:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <wire_right_flg_1>
 			wire_right_flg_2 = _SET;				// 오른쪽 flag '0' 설정
- 29e:	81 e0       	ldi	r24, 0x01	; 1
- 2a0:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <wire_right_flg_2>
- 2a4:	05 c0       	rjmp	.+10     	; 0x2b0 <__vector_3+0xde>
+ 2ba:	81 e0       	ldi	r24, 0x01	; 1
+ 2bc:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <wire_right_flg_2>
+ 2c0:	05 c0       	rjmp	.+10     	; 0x2cc <__vector_3+0xde>
 		}
 		else									// 최초 동작 스위치가 오른쪽이면
 		{
 			wire_right_flg_1 = _SET;				// 왼쪽 flag '1' 초기화
- 2a6:	81 e0       	ldi	r24, 0x01	; 1
- 2a8:	80 93 0c 01 	sts	0x010C, r24	; 0x80010c <wire_right_flg_1>
+ 2c2:	81 e0       	ldi	r24, 0x01	; 1
+ 2c4:	80 93 0c 01 	sts	0x010C, r24	; 0x80010c <wire_right_flg_1>
 			wire_right_flg_2 = _RESET;				// 오른쪽 flag '0' 초기화
- 2ac:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <wire_right_flg_2>
+ 2c8:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <wire_right_flg_2>
 			break;
 		
 		case POW_DIR_RIGHT:
 			break;		
 	}
- 2b0:	ff 91       	pop	r31
- 2b2:	ef 91       	pop	r30
- 2b4:	9f 91       	pop	r25
- 2b6:	8f 91       	pop	r24
- 2b8:	0f 90       	pop	r0
- 2ba:	0f be       	out	0x3f, r0	; 63
- 2bc:	0f 90       	pop	r0
- 2be:	1f 90       	pop	r1
- 2c0:	18 95       	reti
+ 2cc:	ff 91       	pop	r31
+ 2ce:	ef 91       	pop	r30
+ 2d0:	9f 91       	pop	r25
+ 2d2:	8f 91       	pop	r24
+ 2d4:	0f 90       	pop	r0
+ 2d6:	0f be       	out	0x3f, r0	; 63
+ 2d8:	0f 90       	pop	r0
+ 2da:	1f 90       	pop	r1
+ 2dc:	18 95       	reti
 
-000002c2 <USART_Init>:
+000002de <USART_Init>:
 			myString[i] = response;
 			i++;
 		}
 	}
 	myString[i] = 0;
 }
- 2c2:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
- 2c6:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
- 2ca:	88 e9       	ldi	r24, 0x98	; 152
- 2cc:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
- 2d0:	8e e0       	ldi	r24, 0x0E	; 14
- 2d2:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
- 2d6:	08 95       	ret
+ 2de:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 2e2:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+ 2e6:	88 e9       	ldi	r24, 0x98	; 152
+ 2e8:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+ 2ec:	8e e0       	ldi	r24, 0x0E	; 14
+ 2ee:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+ 2f2:	08 95       	ret
 
-000002d8 <USART_Transmit_char>:
- 2d8:	e0 ec       	ldi	r30, 0xC0	; 192
- 2da:	f0 e0       	ldi	r31, 0x00	; 0
- 2dc:	90 81       	ld	r25, Z
- 2de:	95 ff       	sbrs	r25, 5
- 2e0:	fd cf       	rjmp	.-6      	; 0x2dc <USART_Transmit_char+0x4>
- 2e2:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 2e6:	08 95       	ret
+000002f4 <USART_Transmit_char>:
+ 2f4:	e0 ec       	ldi	r30, 0xC0	; 192
+ 2f6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2f8:	90 81       	ld	r25, Z
+ 2fa:	95 ff       	sbrs	r25, 5
+ 2fc:	fd cf       	rjmp	.-6      	; 0x2f8 <USART_Transmit_char+0x4>
+ 2fe:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 302:	08 95       	ret
 
-000002e8 <__vector_18>:
+00000304 <__vector_18>:
 // 	while(!(UCSR0A & (1 << UDRE0)));
 // 	UDR0 = data;
 // }
 
 ISR(USART_RX_vect)
 {
- 2e8:	1f 92       	push	r1
- 2ea:	0f 92       	push	r0
- 2ec:	0f b6       	in	r0, 0x3f	; 63
- 2ee:	0f 92       	push	r0
- 2f0:	11 24       	eor	r1, r1
- 2f2:	8f 93       	push	r24
- 2f4:	9f 93       	push	r25
- 2f6:	af 93       	push	r26
- 2f8:	bf 93       	push	r27
- 2fa:	ef 93       	push	r30
- 2fc:	ff 93       	push	r31
+ 304:	1f 92       	push	r1
+ 306:	0f 92       	push	r0
+ 308:	0f b6       	in	r0, 0x3f	; 63
+ 30a:	0f 92       	push	r0
+ 30c:	11 24       	eor	r1, r1
+ 30e:	8f 93       	push	r24
+ 310:	9f 93       	push	r25
+ 312:	af 93       	push	r26
+ 314:	bf 93       	push	r27
+ 316:	ef 93       	push	r30
+ 318:	ff 93       	push	r31
 	rx_data = UDR0;
- 2fe:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 302:	90 93 45 01 	sts	0x0145, r25	; 0x800145 <rx_data>
+ 31a:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 31e:	90 93 45 01 	sts	0x0145, r25	; 0x800145 <rx_data>
 	rx_buf[rx_cnt++] = rx_data;
- 306:	e0 91 12 01 	lds	r30, 0x0112	; 0x800112 <rx_cnt>
- 30a:	81 e0       	ldi	r24, 0x01	; 1
- 30c:	8e 0f       	add	r24, r30
- 30e:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <rx_cnt>
- 312:	f0 e0       	ldi	r31, 0x00	; 0
- 314:	ed 5e       	subi	r30, 0xED	; 237
- 316:	fe 4f       	sbci	r31, 0xFE	; 254
- 318:	90 83       	st	Z, r25
-	if(rx_cnt == LENTH)
- 31a:	83 30       	cpi	r24, 0x03	; 3
- 31c:	91 f4       	brne	.+36     	; 0x342 <__vector_18+0x5a>
+ 322:	e0 91 12 01 	lds	r30, 0x0112	; 0x800112 <rx_cnt>
+ 326:	81 e0       	ldi	r24, 0x01	; 1
+ 328:	8e 0f       	add	r24, r30
+ 32a:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <rx_cnt>
+ 32e:	f0 e0       	ldi	r31, 0x00	; 0
+ 330:	ed 5e       	subi	r30, 0xED	; 237
+ 332:	fe 4f       	sbci	r31, 0xFE	; 254
+ 334:	90 83       	st	Z, r25
+	if(rx_cnt == PT_LENTH)
+ 336:	83 30       	cpi	r24, 0x03	; 3
+ 338:	91 f4       	brne	.+36     	; 0x35e <__vector_18+0x5a>
 	{
-		memcpy(str, rx_buf, LENTH);
- 31e:	e6 e4       	ldi	r30, 0x46	; 70
- 320:	f1 e0       	ldi	r31, 0x01	; 1
- 322:	a3 e1       	ldi	r26, 0x13	; 19
- 324:	b1 e0       	ldi	r27, 0x01	; 1
- 326:	8d 91       	ld	r24, X+
- 328:	9c 91       	ld	r25, X
- 32a:	11 97       	sbiw	r26, 0x01	; 1
- 32c:	91 83       	std	Z+1, r25	; 0x01
- 32e:	80 83       	st	Z, r24
- 330:	12 96       	adiw	r26, 0x02	; 2
- 332:	8c 91       	ld	r24, X
- 334:	82 83       	std	Z+2, r24	; 0x02
-		str[LENTH] = 0;
- 336:	13 82       	std	Z+3, r1	; 0x03
+		memcpy(str, rx_buf, PT_LENTH);
+ 33a:	e6 e4       	ldi	r30, 0x46	; 70
+ 33c:	f1 e0       	ldi	r31, 0x01	; 1
+ 33e:	a3 e1       	ldi	r26, 0x13	; 19
+ 340:	b1 e0       	ldi	r27, 0x01	; 1
+ 342:	8d 91       	ld	r24, X+
+ 344:	9c 91       	ld	r25, X
+ 346:	11 97       	sbiw	r26, 0x01	; 1
+ 348:	91 83       	std	Z+1, r25	; 0x01
+ 34a:	80 83       	st	Z, r24
+ 34c:	12 96       	adiw	r26, 0x02	; 2
+ 34e:	8c 91       	ld	r24, X
+ 350:	82 83       	std	Z+2, r24	; 0x02
+		str[PT_LENTH] = 0;
+ 352:	13 82       	std	Z+3, r1	; 0x03
 		rx_cnt = 0;
- 338:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <rx_cnt>
+ 354:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <rx_cnt>
 		rx_flag = 1;
- 33c:	81 e0       	ldi	r24, 0x01	; 1
- 33e:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <rx_flag>
+ 358:	81 e0       	ldi	r24, 0x01	; 1
+ 35a:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <rx_flag>
 	}
- 342:	ff 91       	pop	r31
- 344:	ef 91       	pop	r30
- 346:	bf 91       	pop	r27
- 348:	af 91       	pop	r26
- 34a:	9f 91       	pop	r25
- 34c:	8f 91       	pop	r24
- 34e:	0f 90       	pop	r0
- 350:	0f be       	out	0x3f, r0	; 63
- 352:	0f 90       	pop	r0
- 354:	1f 90       	pop	r1
- 356:	18 95       	reti
+ 35e:	ff 91       	pop	r31
+ 360:	ef 91       	pop	r30
+ 362:	bf 91       	pop	r27
+ 364:	af 91       	pop	r26
+ 366:	9f 91       	pop	r25
+ 368:	8f 91       	pop	r24
+ 36a:	0f 90       	pop	r0
+ 36c:	0f be       	out	0x3f, r0	; 63
+ 36e:	0f 90       	pop	r0
+ 370:	1f 90       	pop	r1
+ 372:	18 95       	reti
 
-00000358 <main>:
+00000374 <main>:
 
 #include "common.h"
 
 int main(void)
 {
 	AppInit();
- 358:	0e 94 48 00 	call	0x90	; 0x90 <AppInit>
+ 374:	0e 94 48 00 	call	0x90	; 0x90 <AppInit>
     while (1) 
     {
 		ApplicationMain();
- 35c:	0e 94 6b 00 	call	0xd6	; 0xd6 <ApplicationMain>
- 360:	fd cf       	rjmp	.-6      	; 0x35c <main+0x4>
+ 378:	0e 94 8b 00 	call	0x116	; 0x116 <ApplicationMain>
+ 37c:	fd cf       	rjmp	.-6      	; 0x378 <main+0x4>
 
-00000362 <_exit>:
- 362:	f8 94       	cli
+0000037e <_exit>:
+ 37e:	f8 94       	cli
 
-00000364 <__stop_program>:
- 364:	ff cf       	rjmp	.-2      	; 0x364 <__stop_program>
+00000380 <__stop_program>:
+ 380:	ff cf       	rjmp	.-2      	; 0x380 <__stop_program>
