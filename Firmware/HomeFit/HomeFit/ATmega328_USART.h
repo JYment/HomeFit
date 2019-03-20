@@ -20,7 +20,7 @@
 #define _ASCII				10
 #define _HEX				11
 
-#define LENTH				5
+#define LENTH				3
 
 extern uint8_t rx_data, rx_buf[50], rx_cnt;
 extern volatile uint8_t str[50], rx_flag;

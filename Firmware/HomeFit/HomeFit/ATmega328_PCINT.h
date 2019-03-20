@@ -11,11 +11,16 @@
 
 #include "common.h"
 
-extern volatile uint8_t pin0_flg, pin2_flg, pin4_flg, pin8_flg;
-extern volatile uint8_t pin2_forward_flg, pin4_forward_flg;
-extern volatile uint8_t pin2_reverse_flg, pin4_reverse_flg;
-extern uint8_t state, tick;
+#define WIRE_DIR_LEFT		0x02
+#define WIRE_DIR_RIGHT		0x04
+#define POW_DIR_LEFT		0x01
+#define POW_DIR_RIGHT		0x08
 
+extern volatile uint8_t pin0_flg, pin8_flg;
+extern volatile uint8_t wire_left_flg_1, wire_left_flg_2;
+extern volatile uint8_t wire_right_flg_1, wire_right_flg_2;
+extern uint8_t direction, tick;
+extern volatile uint8_t dir_pos[4];
 void PCINT_init(void);
 
 #endif /* ATMEGA328_PCINT_H_ */

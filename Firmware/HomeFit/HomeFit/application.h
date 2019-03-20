@@ -12,16 +12,19 @@
 #include "common.h"
 
 // 통신 프로토콜
-#define HEADER			0xEA
-#define TAIL			0x5A
-#define STATE_ON		0xFF
-#define STATE_OFF		0x00
+#define PT_HEADER		0xEA
+#define PT_TAIL			0x5A
+#define PT_RESET		0xEE
+
 
 // 동작
 #define FORWARD			11
 #define REVERSE			22
 
+
 void ApplicationMain(void);
 void AppInit(void);
+void all_mode_init(void);
+void send_MSG(void);
 
 #endif /* APPLICATION_H_ */

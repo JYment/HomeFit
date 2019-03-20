@@ -19,6 +19,7 @@
 #include "application.h"
 #include "ATmega328_PCINT.h"
 
-
+#define _SET				1
+#define _RESET				0
 
 #endif /* COMMON_H_ */
