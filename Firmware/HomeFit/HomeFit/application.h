@@ -23,5 +23,6 @@ void AppInit(void);
 void all_mode_init(void);
 void send_msg(void);
 void receive_msg(void);
+void bt_setup(void);
 
 #endif /* APPLICATION_H_ */

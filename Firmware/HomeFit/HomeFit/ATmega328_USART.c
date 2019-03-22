@@ -123,6 +123,7 @@ ISR(USART_RX_vect)
 {
 	rx_data = UDR0;
 	rx_buf[rx_cnt++] = rx_data;
+	//USART_Transmit_char(rx_data);
 	if(rx_cnt == PT_LENTH)
 	{
 		memcpy(str, rx_buf, PT_LENTH);
