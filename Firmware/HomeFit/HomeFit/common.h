@@ -28,5 +28,4 @@
 #define PT_RESET		0xEE
 #define PT_LENTH		3
 
-
 #endif /* COMMON_H_ */

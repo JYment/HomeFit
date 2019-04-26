@@ -9,6 +9,7 @@
 uint8_t rx_data, rx_buf[50], rx_cnt;
 volatile uint8_t str[50], rx_flag = 0;
 
+
 void USART_Init(int ubrr)
 {
 	UBRR0H = (uint8_t) (ubrr >> 8);
@@ -17,14 +18,14 @@ void USART_Init(int ubrr)
 	UCSR0C = (1 << USBS0) | (3 << UCSZ00);
 }
 
-// 문자 출력
+
 void USART_Transmit_char(uint8_t data)
 {
 	while(!(UCSR0A & (1 << UDRE0)));
 	UDR0 = data;	
 }
 
-// 지정한 length 만큼 문자 출력
+
 void USART_Transmit_charBytes(uint8_t* data, int Length)
 {
 	int i=0;
@@ -34,7 +35,7 @@ void USART_Transmit_charBytes(uint8_t* data, int Length)
 	}
 }
 
-// 문자열 출력
+
 void USART_Transmit_str(uint8_t* data, uint8_t type)
 {
 	if(type == _ASCII)
@@ -66,7 +67,7 @@ uint8_t nibbleToHexChar(uint8_t data)				// Converts 4 bits into hexadecimal
 	}
 }
 
-// char를 ASCII 문자형으로 변경
+
 void translateChartoASCII(uint8_t data)
 {
 	uint8_t nibble[2];
@@ -79,7 +80,7 @@ void translateChartoASCII(uint8_t data)
 	USART_Transmit_char(nibble[1]);
 }
 
-// 한문자 입력
+
 uint8_t USART_Receive_char(void)
 {
 	while(!(UCSR0A & (1 << RXC0)));
@@ -87,7 +88,7 @@ uint8_t USART_Receive_char(void)
 	return UDR0;
 }
 
-// 문자열 입력
+
 void USART_Receive_str(uint8_t myString[], uint8_t maxLength)
 {
 	uint8_t response, i = 0;
@@ -107,23 +108,10 @@ void USART_Receive_str(uint8_t myString[], uint8_t maxLength)
 	myString[i] = 0;
 }
 
-// unsigned char USART_Receive(FILE *stream)
-// {
-// 	while(!(UCSR0A & (1 << RXC0)));
-// 	return UDR0;
-// }
-// 
-// void USART_Transmit(char data, FILE *stream)
-// {
-// 	while(!(UCSR0A & (1 << UDRE0)));
-// 	UDR0 = data;
-// }
-
 ISR(USART_RX_vect)
 {
 	rx_data = UDR0;
 	rx_buf[rx_cnt++] = rx_data;
-	//USART_Transmit_char(rx_data);
 	if(rx_cnt == PT_LENTH)
 	{
 		memcpy(str, rx_buf, PT_LENTH);

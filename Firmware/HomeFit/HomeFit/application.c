@@ -94,10 +94,9 @@ void ApplicationMain(void)
 
 void AppInit(void)
 {
-	USART_Init(BAUD_38400);			// USART 9600 baudrate 설정
+	USART_Init(BAUD_9600);			// USART 9600 baudrate 설정
 	PCINT_init();
 	sei();
-	//bt_setup();
 	USART_Transmit_str("START\n", _ASCII);
 }
 
@@ -146,15 +145,4 @@ void receive_msg(void)
 			}
 		}
 	}
-}
-
-void bt_setup(void)
-{
-	USART_Transmit_str("AT\r\n", _ASCII);
-	_delay_ms(500);
- 	USART_Transmit_str("AT+NAME=Gemini-2\r\n", _ASCII);
-	_delay_ms(500);
- 	USART_Transmit_str("AT+RESET\r\n", _ASCII);
-	 _delay_ms(500);
-	while(1);
 }
